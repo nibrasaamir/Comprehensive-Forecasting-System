@@ -1,0 +1,397 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> FORCASTING APP</title>
+    <!-- <link rel="stylesheet" href="ss.css"> -->
+    <style>
+        body {
+            background-repeat: no-repeat;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            font-size: 18px;
+            text-align: center;
+            color: #c52020;
+        }
+
+        h1 {
+            color: rgb(11, 133, 84);
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: #0e0c0c;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px;
+        }
+        div.transbox {
+            margin: 60px;
+            background-color: lightgrey;
+            border: 1px solid black;
+            opacity: 0.6;
+        }
+
+        div.transbox p {
+            margin: 35%;
+            font-weight: bold;
+            color: #000000;
+        }
+
+ 
+.green-text {
+  color: green; /* Green color */
+}
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+*
+{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Quicksand', sans-serif;
+}
+body 
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #000;
+}
+.grey-dropdown {
+    background-color: #ccc; /* Grey color */
+}
+
+section 
+{
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2px;
+  flex-wrap: wrap;
+  overflow: hidden;
+}
+section::before 
+{
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(#514848,#0f0,#000);
+  animation: animate 5s linear infinite;
+}
+@keyframes animate 
+{
+  0%
+  {
+    transform: translateY(-100%);
+  }
+  100%
+  {
+    transform: translateY(100%);
+  }
+}
+section span 
+{
+  position: relative;
+  display: block;
+  width: calc(6.25vw - 2px);
+  height: calc(6.25vw - 2px);
+  background: #181818;
+  z-index: 2;
+  transition: 1.5s;
+}
+section span:hover 
+{
+  background: #0f0;
+  transition: 0s;
+}
+
+section .signin
+{
+  position: absolute;
+  width: 400px;
+  background: #222;  
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  border-radius: 4px;
+  box-shadow: 0 15px 35px rgba(0,0,0,9);
+}
+section .signin .content 
+{
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 40px;
+}
+section .signin .content h2 
+{
+  font-size: 2em;
+  color: #0f0;
+  text-transform: uppercase;
+}
+section .signin .content .form 
+{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+section .signin .content .form .inputBox
+{
+  position: relative;
+  width: 100%;
+}
+section .signin .content .form .inputBox input 
+{
+  position: relative;
+  width: 100%;
+  background: #333;
+  border: none;
+  outline: none;
+  padding: 25px 10px 7.5px;
+  border-radius: 4px;
+  color: #fff;
+  font-weight: 500;
+  font-size: 1em;
+}
+section .signin .content .form .inputBox i 
+{
+  position: absolute;
+  left: 0;
+  padding: 15px 10px;
+  font-style: normal;
+  color: #aaa;
+  transition: 0.5s;
+  pointer-events: none;
+}
+.signin .content .form .inputBox input:focus ~ i,
+.signin .content .form .inputBox input:valid ~ i
+{
+  transform: translateY(-7.5px);
+  font-size: 0.8em;
+  color: #fff;
+}
+.signin .content .form .links 
+{
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.signin .content .form .links a 
+{
+  color: #fff;
+  text-decoration: none;
+}
+.signin .content .form .links a:nth-child(2)
+{
+  color: #0f0;
+  font-weight: 600;
+}
+.signin .content .form .inputBox input[type="submit"]
+{
+  padding: 10px;
+  background: #0f0;
+  color: #000;
+  font-weight: 600;
+  font-size: 1.35em;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+}
+input[type="submit"]:active
+{
+  opacity: 0.6;
+}
+@media (max-width: 900px)
+{
+  section span 
+  {
+    width: calc(10vw - 2px);
+    height: calc(10vw - 2px);
+  }
+}
+@media (max-width: 600px)
+{
+  section span 
+  {
+    width: calc(20vw - 2px);
+    height: calc(20vw - 2px);
+  }
+}
+
+body {
+    align-items: center;
+    display: flex;
+    font-family: sans-serif;
+    font-weight: 600;
+    background: #79A7D3;
+    font-size: 26px;
+    height: 100vh;
+    justify-content: center;
+    margin: 0;
+  }
+  .container {
+    align-items: center;
+    background: #00539C;
+    cursor: pointer;
+    border-radius: 40px;
+    box-shadow: rgba(40, 40, 122, 0.35) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.13) 0px 18px 36px -18px inset;
+    display: flex;
+    height: 80px;
+    justify-content: center;
+    position: relative;
+    width: 200px;
+  }
+  .text {
+    color: #EEA47F;
+    position: absolute;
+    transition: opacity 300ms;
+    user-select: none;
+    -moz-user-select: none;
+  }
+  .fingerprint {
+    /* height: 80px; */
+    left: -8px;
+    opacity: 0;
+    position: absolute;
+    stroke: #b6907c;
+    top: -9px;
+    transition: opacity 1ms;
+  }
+  .fingerprint-active {
+    stroke: #EEA47F;
+  }
+  .fingerprint-out {
+    opacity: 1;
+  }
+  .odd {
+    stroke-dasharray: 0px 50px;
+    stroke-dashoffset: 1px;
+    transition: stroke-dasharray 1ms;
+  }
+  .even {
+    stroke-dasharray: 50px 50px;
+    stroke-dashoffset: -41px;
+    transition: stroke-dashoffset 1ms;
+  }
+  .ok {
+    opacity: 0;
+  }
+  .active.container {
+    animation: 6s Container;
+  }
+  .active .text {
+    opacity: 0;
+    animation: 6s Text forwards;
+  }
+  .active .fingerprint {
+    opacity: 1;
+    transition: opacity 300ms 200ms;
+  }
+  .active .fingerprint-base .odd {
+    stroke-dasharray: 50px 50px;
+    transition: stroke-dasharray 800ms 100ms;
+  }
+  .active .fingerprint-base .even {
+    stroke-dashoffset: 0px;
+    transition: stroke-dashoffset 800ms;
+  }
+  .active .fingerprint-active .odd {
+    stroke-dasharray: 50px 50px;
+    transition: stroke-dasharray 2000ms 1500ms;
+  }
+  .active .fingerprint-active .even {
+    stroke-dashoffset: 0px;
+    transition: stroke-dashoffset 2000ms 1300ms;
+  }
+  .active .fingerprint-out {
+    opacity: 0;
+    transition: opacity 300ms 4100ms;
+  }
+  .active .ok {
+    opacity: 1;
+    animation: 6s Ok forwards;
+  }
+  @keyframes Container {
+    0% { width: 200px }
+    6% { width: 80px }
+    71% { transform: scale(1); }
+    75% { transform: scale(1.2); }
+    77% { transform: scale(1); }
+  
+    94% { width: 80px }
+    100% { width: 200px }
+  }
+  @keyframes Text {
+    0% { opacity: 1; transform: scale(1); }
+    6% { opacity: 0; transform: scale(0.5); }
+  
+    94% { opacity: 0; transform: scale(0.5); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+  @keyframes Ok {
+    0% { opacity: 0 }
+    70% { opacity: 0; transform: scale(0); }
+    75% { opacity: 1; transform: scale(1.1); }
+    77% { opacity: 1; transform: scale(1); }
+    92% { opacity: 1; transform: scale(1); }
+    96% { opacity: 0; transform: scale(0.5); }
+    100% { opacity: 0 }
+  }
+
+
+</style>
+</head>
+<body>
+
+    <br><br><br>
+    <div style="text-align: center; margin-top: 30px; margin-bottom: 30px;">
+        <h1>WELCOME TO <br> The FORCASTING APP</h1>
+    </div>
+
+
+
+<section> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> 
+    
+    
+    <div class="signin"> 
+    <div id="signupForm">
+      <form method="post">
+        <label for="app_choice">Forcasting Application</label>
+        <label for="app_choice">Choose a Dataset:</label>
+        <select name="app_choice" id="app_choice">
+            <option value="app1">CO2 Dataset</option>
+            <option value="app2">Energy Dataset</option>
+        </select>
+        <button type="submit">Go</button>
+    </form>
+
+    </div> 
+         
+
+  </div>
+    
+</section>     
+
+</body>
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CO2 Forecasting</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center; /* Center-align text content */
+            background-color: #111010;
+        }
+        h1, h2, h3 {
+            color: #c52020;
+            .list-item {
+            color: #c52020; /* Set text color to red */
+        }
+
+        }
+        .list-item {
+            color: #c52020; /* Set text color to red */
+        }
+        form {
+            border: 1px solid #111010;
+            padding: 20px;
+            margin-top: 20px;
+            background-color: #111010;
+            text-align: left; /* Align form elements to the left */
+            display: inline-block;
+            width: 80%; /* Adjust form width */
+            box-sizing: border-box; /* Include padding and border in the width */
+            color: #c52020; /* Set text color to white */
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        input[type="date"],
+        select,
+        input[type="radio"] {
+            margin-bottom: 10px;
+            width: calc(100% - 22px); /* Adjust input width */
+            padding: 8px; /* Adjust input padding */
+        }
+        input[type="submit"] {
+            background-color: #c52020;
+            color: #5d8f9c;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%; /* Make submit button full-width */
+            box-sizing: border-box; /* Include padding in width */
+        }
+        input[type="submit"]:hover {
+            background-color: #c52020;
+        }
+        .content-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin-top: 20px;
+            text-align: center;
+            background-color: #111010;
+            color:#c52020;
+        }
+    </style>
+</head>
+<body>
+    <h1>CO2 Forecasting</h1>
+    
+    <!-- ACF and PACF plots -->
+    <div class="content-container">{{ plot_html_acf_pacf | safe }}</div>
+    
+    <!-- Forecast plot dates -->
+    <div class="content-container">{{ plot_html_forecast_dates | safe }}</div>
+
+    <!-- Accuracy Metrics for All Models -->
+    <h2 style="color: #ca3030;">Accuracy Metrics for All Models</h2>
+    <ul style="color: #ca3030;">
+        {% for model, accuracy in model_accuracies.items() %}
+            <li style="color: #ca3030;">{{ model }}: {{ accuracy }}</li>
+        {% endfor %}
+    </ul>
+
+    <!-- Display Plots for All Models -->
+    <h2>Plots for All Models</h2>
+    {% for model, plot_html in model_plots.items() %}
+        <div class="content-container">
+            <h3>{{ model }}</h3>
+            {{ plot_html | safe }}
+        </div>
+    {% endfor %}
+
+    <!-- Forecast plot -->
+    <div class="content-container">{{ plot_html_forecast | safe }}</div>
+    
+    <!-- Best Model Plot and Explanation -->
+    {% if plot_html_best_model %}
+        <h2>Best Model</h2>
+        <div class="content-container">{{ plot_html_best_model | safe }}</div>
+        <div class="content-container">{{ explanation_html | safe }}</div>
+    {% endif %}
+
+    <!-- All Models RMSE Table -->
+    {% if rmse_table_html %}
+        <h2>All Models RMSE</h2>
+        <div class="content-container">{{ rmse_table_html | safe }}</div>
+    {% endif %}
+
+    <form method="post" action="/api/daily">
+        <h2>Input Form</h2>
+        <label for="start_date">Start Date:</label>
+        <input type="date" id="start_date" name="start_date">
+        
+        <label for="end_date">End Date:</label>
+        <input type="date" id="end_date" name="end_date">
+        
+        <label for="model_choice">Model Choice:</label>
+        <select id="model_choice" name="model_choice">
+            <option value="arima">ARIMA</option>
+            <option value="sarima">SARIMA</option>
+            <option value="ets">ETS</option>
+            <option value="prophet">Prophet</option>
+            <option value="svr">SVR</option>
+            <option value="lstm">LSTM</option>
+            <option value="ann">ANN</option>
+            <option value="hybrid">Hybrid</option>
+            <option value="all">All</option>
+        </select>
+        
+        <div>
+            <label for="see_all_rmse">Do you want to see RMSEs?</label>
+            <input type="radio" id="yes_rmse" name="see_all_rmse" value="yes">
+            <label for="yes_rmse">Yes</label>
+            <input type="radio" id="no_rmse" name="see_all_rmse" value="no">
+            <label for="no_rmse">No</label>
+        </div>
+
+        <div>
+            <label for="see_best_model">Do you want to view the best model?</label>
+            <input type="radio" id="yes_best" name="see_best_model" value="yes">
+            <label for="yes_best">Yes</label>
+            <input type="radio" id="no_best" name="see_best_model" value="no">
+            <label for="no_best">No</label>
+        </div>
+
+        <div>
+            <label for="see_acf_pacf">Do you want to see ACF and PACF plots?</label>
+            <input type="radio" id="yes_acf_pacf" name="see_acf_pacf" value="yes">
+            <label for="yes_acf_pacf">Yes</label>
+            <input type="radio" id="no_acf_pacf" name="see_acf_pacf" value="no">
+            <label for="no_acf_pacf">No</label>
+        </div>
+
+        <div>
+            <label for="html_forecast_dates">Do you want to see the time frame plot?</label>
+            <input type="radio" id="yes_forecast_dates" name="html_forecast_dates" value="yes">
+            <label for="yes_forecast_dates">Yes</label>
+            <input type="radio" id="no_forecast_dates" name="html_forecast_dates" value="no">
+            <label for="no_forecast_dates">No</label>
+        </div>
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
